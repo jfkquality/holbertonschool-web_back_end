@@ -4,6 +4,7 @@ from typing import List, Union, Tuple,  Any, Mapping, TypeVar
 
 T = TypeVar('T', bound=Any)
 
+
 def zoom_array(lst: Tuple, factor: int = 2) -> List:
     """ Sample code for 12/102 """
     zoomed_in: List = [
