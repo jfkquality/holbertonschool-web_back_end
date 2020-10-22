@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" 1. Let's execute multiple coroutines at the same time with async """
+""" 2. Measure the runtime  """
 
 import asyncio
 import random
