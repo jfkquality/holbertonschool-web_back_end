@@ -13,7 +13,8 @@ async def wait_n(n: int, max_delay: int = 10) -> List:
 
     result = []
 
-    for i in range(n):
-        result.append(await wait_random(max_delay))
+    for f in asyncio.as_completed([wait_random(max_delay) for i in range(n)]):
+        result1 = await f
+        result.append(result1)
 
     return result
