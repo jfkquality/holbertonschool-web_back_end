@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 0-main """
+""" 0. Basic dictionary  """
 BaseCaching = __import__('base_caching').BaseCaching
 
 
@@ -8,6 +8,8 @@ class BasicCache(BaseCaching):
 
     def put(self, key, item):
         """ Setter method """
+        if key is None or item is None:
+            return None
         self.cache_data[key] = item
 
     def get(self, key):
