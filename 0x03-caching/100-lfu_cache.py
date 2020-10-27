@@ -17,7 +17,7 @@ class LFUCache(BaseCaching):
         if key is None or item is None:
             return
         if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-            last = self.cache_data.popitem(last=True)
+            last = self.cache_data.popitem(last=False)
             print("DISCARD: {}".format(last[0]))
         self.cache_data[key] = item
         self.cache_data.move_to_end(key, last=False)
