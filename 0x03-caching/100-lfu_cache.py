@@ -18,9 +18,9 @@ class LFUCache(BaseCaching):
         # print("CACHE {}".format(self.cache_data))
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
             # last = list(self.cache_data.keys())[-1]
-            last = list(self.cache_data.keys())[0]
-            self.cache_data.pop(last)
-            # last = self.cache_data.popitem(last=False)
+            # last = list(self.cache_data.keys())[0]
+            # self.cache_data.pop(last)
+            last = self.cache_data.popitem(last=False)
             print("DISCARD: {}".format(last[0]))
 
     def get(self, key):

@@ -13,6 +13,8 @@ class LRUCache(BaseCaching):
 
     def put(self, key, item):
         """ Setter method """
+        if key is None or item is None:
+            return
         self.cache_data[key] = item
         self.cache_data.move_to_end(key)
         # print("CACHE {}".format(self.cache_data))
