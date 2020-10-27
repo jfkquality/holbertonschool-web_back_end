@@ -13,17 +13,17 @@ class MRUCache(BaseCaching):
 
     def put(self, key, item):
         """ Setter method """
-        self.cache_data[key] = item
-        self.cache_data.move_to_end(key, last=False)
         # print("CACHE {}".format(self.cache_data))
         if key is None or item is None:
             return
-        if len(self.cache_data) > BaseCaching.MAX_ITEMS:
+        if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
             # last = list(self.cache_data.keys())[-1]
             # last = list(self.cache_data.keys())[0]
             # self.cache_data.pop(last)
-            last = self.cache_data.popitem(last=True)
+            last = self.cache_data.popitem(last=False)
             print("DISCARD: {}".format(last[0]))
+        self.cache_data[key] = item
+        self.cache_data.move_to_end(key, last=False)
 
     def get(self, key):
         """ Getter method """
