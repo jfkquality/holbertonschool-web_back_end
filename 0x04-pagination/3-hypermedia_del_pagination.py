@@ -42,7 +42,6 @@ class Server:
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """ Get indexed data """
         data = self.indexed_dataset()
-        # print("DATA INDEX {} {}".format(index, data.get(index)))
         assert index >= 0 and index <= len(data)
         return {
             'index': index,
