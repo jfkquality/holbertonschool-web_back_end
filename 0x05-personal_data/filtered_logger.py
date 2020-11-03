@@ -3,7 +3,9 @@
 
 import re
 import logging
+import mysql-connector
 from typing import List
+from os import environ as e
 
 PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
 
@@ -27,6 +29,20 @@ def get_logger() -> logging.Logger:
     handler.setFormatter(formatter)
     log.addHandler(handler)
     return log
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """ Get connector to db """
+    u = e.PERSONAL_DATA_DB_USERNAME
+    p = e.PERSONAL_DATA_DB_PASSWORD
+    h = e.PERSONAL_DATA_DB_HOST
+    db = e.PERSONAL_DATA_DB_NAAME
+    # sql = mysql.connector.connect()
+
+    return mysql.connector.connect(user=u,
+                                   password=p,
+                                   host=h,
+                                   database=db)
 
 
 class RedactingFormatter(logging.Formatter):
