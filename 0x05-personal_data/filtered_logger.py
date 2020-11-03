@@ -3,7 +3,7 @@
 
 import re
 import logging
-import mysql-connector
+import mysql.connector
 from typing import List
 from os import environ as e
 
@@ -33,10 +33,10 @@ def get_logger() -> logging.Logger:
 
 def get_db() -> mysql.connector.connection.MySQLConnection:
     """ Get connector to db """
-    u = e.['PERSONAL_DATA_DB_USERNAME']
-    p = e.['PERSONAL_DATA_DB_PASSWORD']
-    h = e.['PERSONAL_DATA_DB_HOST']
-    db = e.['PERSONAL_DATA_DB_NAAME']
+    u = e['PERSONAL_DATA_DB_USERNAME']
+    p = e['PERSONAL_DATA_DB_PASSWORD']
+    h = e['PERSONAL_DATA_DB_HOST']
+    db = e['PERSONAL_DATA_DB_NAAME']
     # sql = mysql.connector.connect()
 
     return mysql.connector.connect(user=u,
