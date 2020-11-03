@@ -80,7 +80,7 @@ def main():
     log.info(msg)
 
     formatter = RedactingFormatter(fields=list(PII_FIELDS))
-    for k - range(i + 1):
+    for k in range(i + 1):
         print(formatter.format(log_record))
     cursor.close()
     db.close()
