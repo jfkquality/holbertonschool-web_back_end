@@ -1,9 +1,10 @@
 #!usr/bin/env python3
 """ Creat Auth class """
 
+from typing import List, TypeVar
 from flask import request
 
-def Class Auth:
+class Auth:
     """ Auth class """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """ require autho method """
