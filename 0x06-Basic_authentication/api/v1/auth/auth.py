@@ -26,7 +26,6 @@ class Auth:
         if 'Authorization' not in request.headers:
             return None
         else:
-            print("AUTH HEADER REQUESET ", request.headers['Authorization'])
             return request.headers['Authorization']
         return None
 
