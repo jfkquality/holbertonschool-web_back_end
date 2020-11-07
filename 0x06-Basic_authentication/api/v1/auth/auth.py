@@ -25,7 +25,10 @@ class Auth:
             return None
         if 'Authorization' not in request.headers:
             return None
-        return request.headers('Authorization')
+        else:
+            print("AUTH HEADER REQUESET ", request.headers['Authorization'])
+            return request.headers['Authorization']
+        return None
 
     def current_user(self, request=None) -> TypeVar('User'):
         """ current user method """

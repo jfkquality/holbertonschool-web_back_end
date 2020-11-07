@@ -39,12 +39,12 @@ def forbidden(error) -> str:
 
 
 @app.before_request
-def before_req():
+def before_request():
     """ Runs before any request. """
-    if auth is not None and not auth.require_auth(request.path,
-                                                  ['/api/v1/status/',
-                                                   '/api/v1/unauthorized/',
-                                                   '/api/v1/forbidden/']):
+    if auth is not None and auth.require_auth(request.path,
+                                              ['/api/v1/status/',
+                                               '/api/v1/unauthorized/',
+                                               '/api/v1/forbidden/']):
         if auth.authorization_header(request) is None:
             abort(401, description="unauthorized")
         if auth.current_user(request) is None:
