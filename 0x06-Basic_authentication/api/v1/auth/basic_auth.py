@@ -6,6 +6,7 @@ from api.v1.auth.auth import Auth
 from models.user import User
 from typing import List, TypeVar
 
+
 class BasicAuth(Auth):
     """ Basic Autho class """
 
@@ -58,7 +59,7 @@ class BasicAuth(Auth):
             return None
 
         try:
-            users = User.search({"email":user_email})
+            users = User.search({"email": user_email})
             for user in users:
                 if user and user.is_valid_password(usr_pwd):
                     return user
