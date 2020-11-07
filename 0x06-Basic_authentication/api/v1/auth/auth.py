@@ -14,6 +14,10 @@ class Auth:
             return True
         if excluded_paths is None or not excluded_paths:
             return True
+        for excluded in excluded_paths:
+            wildcard = excluded.find("*")
+            if wildcard >= 0:
+                return False
         path = os.path.join(path, '')
         if path in excluded_paths:
             return False
