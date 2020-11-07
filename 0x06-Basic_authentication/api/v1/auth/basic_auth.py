@@ -44,6 +44,6 @@ class BasicAuth(Auth):
             return (None, None)
         if ":" not in decoded_base64_authorization_header:
             return (None, None)
-        colon =  decoded_base64_authorization_header.find(":")
+        colon = decoded_base64_authorization_header.find(":")
         decoded_b64 = decoded_base64_authorization_header
-        return  (decoded_b64[:colon], decoded_b64[colon + 1:])
+        return (decoded_b64[:colon], decoded_b64[colon + 1:])
