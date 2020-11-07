@@ -1,4 +1,4 @@
-#!/usr/bin/env pyhhon3
+#!/usr/bin/env python3
 """ Basic Auth class """
 
 from api.v1.auth.auth import Auth
