@@ -17,8 +17,8 @@ class Auth:
         for excluded in excluded_paths:
             wildcard = excluded.find("*")
             if wildcard >= 0:
-                # if excluded[:wildcard] in path:
-                return False
+                if excluded[:wildcard] in path:
+                    return False
         path = os.path.join(path, '')
         if path in excluded_paths:
             return False
