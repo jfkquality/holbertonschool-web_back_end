@@ -8,7 +8,7 @@ from typing import List, TypeVar
 
 
 class BasicAuth(Auth):
-    """ Basic Autho class """
+    """ Basic Auth class """
 
     def extract_base64_authorization_header(self,
                                             authorization_header: str) -> str:
@@ -66,10 +66,15 @@ class BasicAuth(Auth):
         except Exception:
             return None
 
-    # def current_user(self, request=None) -> TypeVar('User'):
-    #         """ Basic - Overload current_user. """
-    #         super().__init__(*args, **kwargs)
-    #         self.email = kwargs.get('email')
-    #         self._password = kwargs.get('_password')
-    #         self.first_name = kwargs.get('first_name')
-    #         self.last_name = kwargs.get('last_name')
+    def current_user(self, request=None) -> TypeVar('User'):
+            """ Basic - Overload current_user. """
+            header = Auth.authorization_header(request)
+            header = self.extract_base64_authorization_header(header)
+            header = self.decode_base64_authorization_header(header)
+            credentials = self.extract_user_credentials(header)
+            # print("CREDENTIALS ", credentials)
+            # for cred in credentials:
+            #     print("CREDENTIAL ", cred)
+            user = self.user_object_from_credentials(credentials[0], credentials[1])
+
+            return user
