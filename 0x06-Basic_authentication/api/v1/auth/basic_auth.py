@@ -65,3 +65,11 @@ class BasicAuth(Auth):
                     return user
         except Exception:
             return None
+
+    def current_user(self, request=None) -> TypeVar('User'):
+            """ Basic - Overload current_user. """
+            super().__init__(*args, **kwargs)
+            self.email = kwargs.get('email')
+            self._password = kwargs.get('_password')
+            self.first_name = kwargs.get('first_name')
+            self.last_name = kwargs.get('last_name')
