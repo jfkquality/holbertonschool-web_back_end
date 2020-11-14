@@ -68,7 +68,7 @@ class BasicAuth(Auth):
 
     def current_user(self, request=None) -> TypeVar('User'):
         """ Basic - Overload current_user. """
-        header = Auth.authorization_header(request)
+        header = self.authorization_header(request)
         header = self.extract_base64_authorization_header(header)
         header = self.decode_base64_authorization_header(header)
         credentials = self.extract_user_credentials(header)
@@ -78,5 +78,6 @@ class BasicAuth(Auth):
         email = credentials[0]
         pwd = credentials[1]
         user = self.user_object_from_credentials(email, pwd)
+        # print("USER ", user)
 
         return user
