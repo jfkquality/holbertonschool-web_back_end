@@ -26,3 +26,8 @@ class SessionAuth(Auth):
         if session_id is None or not isinstance(session_id, str):
             return None
         return SessionAuth.user_id_by_session_id.get(session_id)
+
+    def current_user(self, request=None):
+        cookie = Auth.session_cookie(request)
+        user_id = self.user_id_for_session_id(cookie)
+        User.get(user_id)
