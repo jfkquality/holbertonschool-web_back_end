@@ -5,8 +5,17 @@ from api.v1.auth.auth import Auth
 from models.user import User
 from typing import List, TypeVar
 import base64
+import uuid
 
 
 class SessionAuth(Auth):
     """ class SessionAuth. """
-    pass
+    user_id_by_session_id = {}
+
+    def create_session(self, user_id: str = None) -> str:
+        """ create session method. """
+        if user_id is None or not isinstance(user_id, str):
+            return None
+        sess_id = str(uuid.uuid4())
+        SessionAuth.user_id_by_session_id[sess_id] = user_id
+        return sess_id
