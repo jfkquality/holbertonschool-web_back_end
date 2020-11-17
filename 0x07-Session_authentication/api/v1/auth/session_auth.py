@@ -30,4 +30,4 @@ class SessionAuth(Auth):
     def current_user(self, request=None):
         cookie = Auth.session_cookie(request)
         user_id = self.user_id_for_session_id(cookie)
-        User.get(user_id)
+        return User.get(user_id)
