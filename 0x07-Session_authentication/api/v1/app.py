@@ -59,7 +59,7 @@ def before_request():
             abort(401, description="unauthorized")
         if auth.current_user(request) is None:
             abort(403, description="forbidden")
-    request.current_user = auth.current_user(request)
+        request.current_user = auth.current_user(request)
 
 
 if __name__ == "__main__":
