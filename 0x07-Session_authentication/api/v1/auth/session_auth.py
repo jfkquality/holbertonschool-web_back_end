@@ -6,6 +6,7 @@ from models.user import User
 from typing import List, TypeVar
 import base64
 import uuid
+import os
 
 
 class SessionAuth(Auth):
