@@ -45,4 +45,4 @@ class Auth:
 
         cookie = os.getenv('SESSION_NAME')
 
-        return request.cookies.get('_my_session_id')
+        return request.cookies.get(cookie)
