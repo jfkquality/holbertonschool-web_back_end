@@ -31,4 +31,6 @@ class SessionAuth(Auth):
         """ override Auth current_user """
         cookie = Auth.session_cookie(request)
         user_id = self.user_id_for_session_id(cookie)
+        if isinstance(user_id, dict):
+            user_id = user_id["user_id"]
         return User.get(user_id)
