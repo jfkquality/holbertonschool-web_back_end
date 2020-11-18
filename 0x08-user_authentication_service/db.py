@@ -19,8 +19,8 @@ class DB:
         self.__session = None
 
     @property
-    """ Getter """
     def _session(self):
+        """ Getter """
         if self.__session is None:
             DBSession = sessionmaker(bind=self._engine)
             self.__session = DBSession()
@@ -29,7 +29,7 @@ class DB:
     def add_user(self, email, hashed_password):
         """ Add user """
         sess = self._session
-        user = User(email=email, hashed_password=hashed_password)
-        sess.add(user)
+        usr = User(email=email, hashed_password=hashed_password)
+        sess.add(usr)
         sess.commit()
-        return user
+        return usr
