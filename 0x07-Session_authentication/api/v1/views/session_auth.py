@@ -24,18 +24,18 @@ def auth_login():
     # (= POST /api/v1/auth_session/login
     #  path = os.path.join(path, '')
 
-
     users = User.search({"email": email})
     if not users:
-        return jsonify({ "error": "no user found for this email"}), 404
+        return jsonify({"error": "no user found for this email"}), 404
     # for user in users:
     if not users.is_valid_password(user_pwd):
-        return jsonify({ "error": "wrong password"}), 401
+        return jsonify({"error": "wrong password"}), 401
         # break
 
     from api.v1.app import auth
-    sess_id =  auth.create_session(users.id)
+    sess_id = auth.create_session(users.id)
     return users.to_json()
+
 
 def create_user() -> str:
     """ POST /api/v1/users/
