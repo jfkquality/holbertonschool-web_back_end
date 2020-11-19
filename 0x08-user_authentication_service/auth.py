@@ -6,6 +6,7 @@ from user import User
 from sqlalchemy.exc import InvalidRequestError
 from sqlalchemy.orm.exc import NoResultFound
 
+
 class Auth:
     """ Auth class """
 
