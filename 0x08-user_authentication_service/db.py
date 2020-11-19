@@ -45,3 +45,9 @@ class DB:
         else:
             return result
         raise InvalidRequestError()
+
+    def update_user(self, user_id, **kwargs) -> None:
+        user = self.find_user_by(**kwargs)
+        sess = self._session
+        sess.query(User).filter(user_id == user.id).update(**kwargs)
+        sess.commit()
