@@ -50,8 +50,5 @@ class DB:
         """ update user """
         user = self.find_user_by(id=user_id)
         sess = self._session
-        try:
-            sess.query(User).filter(user_id == user.id).update(kwargs)
-        except ValueError as e:
-            raise e
+        sess.query(User).filter(user_id == user.id).update(kwargs)
         sess.commit()
