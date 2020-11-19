@@ -12,6 +12,7 @@ from user import User
 
 
 class DB:
+    """ DB Class """
 
     def __init__(self):
         """ Constructor """
