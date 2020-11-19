@@ -48,7 +48,10 @@ class DB:
 
     def update_user(self, user_id, **kwargs) -> None:
         """ update user """
-        user = self.find_user_by(**kwargs)
+        user = self.find_user_by(id=user_id)
         sess = self._session
-        sess.query(User).filter(user_id == user.id).update(**kwargs)
+        try:
+            sess.query(User).filter(user_id == user.id).update(kwargs)
+        except ValueError as e:
+            raise e
         sess.commit()
