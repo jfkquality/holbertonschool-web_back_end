@@ -41,6 +41,6 @@ class DB:
         sess = self._session
         if not sess.query(User).filter_by(**kwargs).first():
             raise NoResultFound()
-        if sess.query(User).filter_by(**kwargs):
+        if sess.query(User).filter_by(**kwargs).first():
             return sess.query(User).filter_by(**kwargs).first()
         raise InvalidRequestError()
