@@ -46,7 +46,7 @@ class DB:
             return result
         raise InvalidRequestError()
 
-    def update_user(self, user_id, **kwargs) -> None:
+    def update_user(self, user_id -> int, **kwargs) -> None:
         """ update user """
         user = self.find_user_by(id=user_id)
         sess = self._session
