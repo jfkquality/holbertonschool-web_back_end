@@ -55,3 +55,4 @@ class DB:
                 raise ValueError()
         sess.query(User).filter(user_id == user.id).update(kwargs)
         sess.commit()
+        return None
