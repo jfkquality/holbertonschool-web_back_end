@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-""" Auth """
 
 import bcrypt
 
@@ -7,7 +6,7 @@ import bcrypt
 #     """ Auth class """
 
 
-def _hash_password(password):
+def _hash_password(password: str) -> str:
     """ hash password """
     salt = bcrypt.gensalt()
     return bcrypt.hashpw(password.encode(), salt)
