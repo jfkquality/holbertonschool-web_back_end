@@ -47,7 +47,7 @@ class DB:
         raise InvalidRequestError()
 
     def update_user(self, user_id: int, **kwargs) -> None:
-        """ update user """
+        """ update user with kwargs """
         user = self.find_user_by(id=user_id)
         sess = self._session
         for key in kwargs.keys():
@@ -55,4 +55,3 @@ class DB:
                 raise ValueError()
         sess.query(User).filter(user_id == user.id).update(kwargs)
         sess.commit()
-        return None
