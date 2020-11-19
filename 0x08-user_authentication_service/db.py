@@ -47,6 +47,7 @@ class DB:
         raise InvalidRequestError()
 
     def update_user(self, user_id, **kwargs) -> None:
+        """ update user """
         user = self.find_user_by(**kwargs)
         sess = self._session
         sess.query(User).filter(user_id == user.id).update(**kwargs)
