@@ -45,11 +45,3 @@ class DB:
         else:
             return result
         raise InvalidRequestError()
-
-        # try:
-        #     res = sess.query(User).filter_by(**kwargs).first()
-        #     if not res:
-        #         raise NoResultFound
-        # except InvalidRequestError as e:
-        #     raise e
-        # return res
