@@ -36,16 +36,11 @@ class DB:
         sess.commit()
         return usr
 
-    # def find_user_by(self, **kwargs):
-    #     sess = self._session
-    #     for k, v in kwargs.items():
-    #         # print("KEY:", k, "VALUE:", v)
-    #         key = getattr(User, k)
-    #         # print("SESSION QUERY KEY:", sess.query(key).
-    # filter_by(email=str(v)))
-    #         if not sess.query(key).filter(key==v):
-    #             raise NoResultFound()
-    #         if sess.query(key).filter(key==v):
-    #             return sess.query(key).filter(key==v)
-    #     # return sess.query(User, key)
-    #     # raise InvalidRequestError()
+    def find_user_by(self, **kwargs):
+        """ find user by kwargs """
+        sess = self._session
+        if not sess.query(User).filter_by(**kwargs).first():
+            raise NoResultFound()
+        if sess.query(User).filter_by(**kwargs):
+            return sess.query(User).filter_by(**kwargs).first()
+        raise InvalidRequestError()
