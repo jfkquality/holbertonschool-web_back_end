@@ -50,5 +50,8 @@ class DB:
         """ update user """
         user = self.find_user_by(id=user_id)
         sess = self._session
+        for key in kwargs.keys():
+            if key not in User.__table__.columns:
+                raise ValueError()
         sess.query(User).filter(user_id == user.id).update(kwargs)
         sess.commit()
