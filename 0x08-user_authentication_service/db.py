@@ -43,5 +43,5 @@ class DB:
         if not result:
             raise NoResultFound()
         else:
-            return sess.query(User).filter_by(**kwargs).first()
+            return result
         raise InvalidRequestError()
