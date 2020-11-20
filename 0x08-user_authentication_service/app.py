@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, jsonify, request, abort, make_response, redirect
+from flask_api import status
 from auth import Auth
 
 AUTH = Auth()
@@ -57,7 +58,7 @@ def logout():
     try:
         user = AUTH.get_user_from_session_id(sess)
     except Exception:
-        return jasonify(), 403
+        return status.HTTP_403_FORBIDDEN
 
     AUTH.destroy_session(user.id)
     return redirect('/')
