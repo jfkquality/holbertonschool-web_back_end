@@ -38,7 +38,7 @@ def login():
         form = {"email": email, "message": "logged in"}
         resp = make_response(form)
         resp.set_cookie('session_id', sess)
-        return resp  # jsonify({"HELLO": "hello"})
+        return jsonify(resp)
     else:
         abort(401)
 
