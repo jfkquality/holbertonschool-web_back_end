@@ -57,11 +57,10 @@ def logout():
     sess = request.cookies.get('session_id')
     try:
         user = AUTH.get_user_from_session_id(sess)
+        AUTH.destroy_session(user.id)
+        return redirect('/')
     except Exception:
         return status.HTTP_403_FORBIDDEN
-
-    AUTH.destroy_session(user.id)
-    return redirect('/')
 
 
 if __name__ == "__main__":
