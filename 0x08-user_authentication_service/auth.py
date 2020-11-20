@@ -44,6 +44,8 @@ class Auth:
         except Exception:
             return None
 
+    # def get_user_from_session_id(session_id: str) -> str:
+
 
 def _hash_password(password: str) -> str:
     """ hash password """
