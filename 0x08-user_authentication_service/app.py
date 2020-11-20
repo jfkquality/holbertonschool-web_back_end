@@ -3,7 +3,7 @@
 from flask import Flask, jsonify, request, abort, make_response
 from auth import Auth
 
-Auth = Auth()
+AUTH = Auth()
 
 app = Flask(__name__)
 
@@ -18,7 +18,7 @@ def hello():
 def users() -> str:
     """ Add/Authenticate user """
     try:
-        user = Auth.register_user(request.form['email'],
+        user = AUTH.register_user(request.form['email'],
                                   request.form['password'])
         return jsonify({"email": user.email, "message": "user created"})
     except ValueError:
@@ -28,7 +28,7 @@ def users() -> str:
 @app.route('/sessions', methods=['POST'], strict_slashes=False)
 def login():
     """ Login function """
-    if Auth.valid_login(request.form['email'],
+    if AUTH.valid_login(request.form['email'],
                         request.form['password']):
         email = request.form['email']
         pwd = request.form['password']
