@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, jsonify, request, abort, make_response, redirect
-from flask_api import status
+# from flask_api import status
 from auth import Auth
 
 AUTH = Auth()
@@ -36,7 +36,7 @@ def login():
         form = {"email": email, "message": "logged in"}
         resp = make_response(jsonify(form))
         resp.set_cookie('session_id', sess)
-        return resp
+        return Resonse(status=403)
     else:
         abort(401)
 
