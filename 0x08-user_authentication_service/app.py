@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, jsonify, request, abort, make_response, redirect
-# from flask_api import status
+from flask_api import status
 from auth import Auth
 
 AUTH = Auth()
@@ -36,7 +36,7 @@ def login():
         form = {"email": email, "message": "logged in"}
         resp = make_response(jsonify(form))
         resp.set_cookie('session_id', sess)
-        return Resonse(status=403)
+        return resp
     else:
         abort(401)
 
@@ -60,7 +60,7 @@ def logout():
         AUTH.destroy_session(user.id)
         return redirect('/')
     except Exception:
-        return status.HTTP_403_FORBIDDEN
+        return Resonse(status=403)
 
 
 if __name__ == "__main__":
