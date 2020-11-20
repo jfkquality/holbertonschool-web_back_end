@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import bcrypt
+import uuid
 from db import DB
 from user import User
 from sqlalchemy.exc import InvalidRequestError
@@ -38,3 +39,6 @@ def _hash_password(password: str) -> str:
     """ hash password """
     salt = bcrypt.gensalt()
     return bcrypt.hashpw(password.encode(), salt)
+
+def _generate_uuid() -> str:
+    return str(uuid.uuid4())
