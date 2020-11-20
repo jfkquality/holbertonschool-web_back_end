@@ -59,7 +59,7 @@ def logout():
         AUTH.destroy_session(user.id)
         return redirect('/', 302)
     except Exception:
-        abort(403)
+        return jasonify(), 403
 
 
 if __name__ == "__main__":
