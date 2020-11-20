@@ -28,12 +28,11 @@ def users() -> str:
 @app.route('/sessions', methods=['POST'], strict_slashes=False)
 def login() -> str:
     """ Login function """
+    # d = request.form
     if AUTH.valid_login(request.form['email'],
                         request.form['password']):
         email = request.form['email']
         pwd = request.form['password']
-        print("EMAIL:", email, "PASSWORD:", pwd)
-        # user = find_user_by(email, pwd)
         sess = AUTH.create_session(email)
         form = {"email": email, "message": "logged in"}
         resp = make_response(form)
