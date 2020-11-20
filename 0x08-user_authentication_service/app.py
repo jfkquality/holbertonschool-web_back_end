@@ -56,10 +56,11 @@ def logout():
     sess = request.cookies.get('session_id')
     try:
         user = AUTH.get_user_from_session_id(sess)
-        AUTH.destroy_session(user.id)
-        return redirect('/', 302)
     except Exception:
         return jasonify(), 403
+
+    AUTH.destroy_session(user.id)
+    return redirect('/')
 
 
 if __name__ == "__main__":
