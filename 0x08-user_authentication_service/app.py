@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-""" Flask app """
 
 from flask import Flask, jsonify, request, abort, make_response
 from auth import Auth
@@ -27,18 +26,29 @@ def users() -> str:
 
 
 @app.route('/sessions', methods=['POST'], strict_slashes=False)
-def login() -> str:
+def login():
     """ Login function """
     # d = request.form
-    if AUTH.valid_login(request.form['email'],
-                        request.form['password']):
-        email = request.form['email']
-        pwd = request.form['password']
-        sess = AUTH.create_session(email)
-        form = {"email": email, "message": "logged in"}
-        resp = make_response(form)
-        resp.set_cookie('session_id', sess)
-        return jsonify(resp)
+    # email = request.form['email']
+    # password = request.form['password']
+    # if AUTH.valid_login(email, password):
+    #     sess = AUTH.create_session(email)
+    #     form = {"email": email, "message": "logged in"}
+    #     resp = make_response(form)
+    #     resp.set_cookie('session_id', sess)
+    #     return resp
+    # else:
+    #     abort(401)
+
+    data = request.form
+
+    valid = AUTH.valid_login(data['email'], data['password'])
+    if valid:
+        sess = AUTH.create_session(data['email'])
+        resp = make_response({"email": data['email'],
+                              "message": "logged in"})
+        resp.set_cookie("session_id", sess)
+        return resp
     else:
         abort(401)
 
