@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" doc string """
 
 import bcrypt
 import uuid
@@ -72,7 +73,7 @@ class Auth:
             self._db.update_user(user.id, hashed_password=hpwd,
                                  reset_token=None)
             return None
-        except Exception:
+        except NoResultFound:
             raise ValueError
 
 
