@@ -72,8 +72,7 @@ class Auth:
             raise ValueError
 
         hpwd = _hash_password(password)
-        self._db.update_user(user.id, hashed_password=hpwd)
-        self._db.update_user(user.id, reset_token=None)
+        self._db.update_user(user.id, hashed_password=hpwd, reset_token=None)
 
 
 def _hash_password(password: str) -> str:
