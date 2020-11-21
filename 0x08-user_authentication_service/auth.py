@@ -55,6 +55,15 @@ class Auth:
         """ 13. Destroy session """
         self._db.update_user(user_id, session_id=None)
 
+    def get_reset_password_token(self, email: str) -> str:
+        """ 16. Generate reset password token """
+        try:
+            user = self._db.find_user_by(email=email)
+            token = uuid.uuid4()
+            self._db.update_user(user.id, reset_token=token)
+        except ValueError as e:
+            return e
+
 
 def _hash_password(password: str) -> str:
     """ hash password """
