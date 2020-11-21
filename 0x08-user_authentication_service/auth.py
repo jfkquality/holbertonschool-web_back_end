@@ -61,6 +61,7 @@ class Auth:
             user = self._db.find_user_by(email=email)
             token = uuid.uuid4()
             self._db.update_user(user.id, reset_token=token)
+            return token
         except ValueError as e:
             return e
 
