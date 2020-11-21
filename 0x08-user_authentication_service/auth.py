@@ -60,7 +60,7 @@ class Auth:
         if email:
             user = self._db.find_user_by(email=email)
             if user:
-                token = uuid.uuid4()
+                token = _generate_uuid()
                 self._db.update_user(user.id, reset_token=token)
                 return token
         raise ValueError()
