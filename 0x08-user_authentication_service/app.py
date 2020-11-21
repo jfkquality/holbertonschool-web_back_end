@@ -64,7 +64,7 @@ def logout():
 
 
 @app.route('/profile', methods=['GET'], strict_slashes=False)
-def profile:
+def profile():
     """ 15. User profile """
     sess = request.cookies.get('session_id')
     if sess:
