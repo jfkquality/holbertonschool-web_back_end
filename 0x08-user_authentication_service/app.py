@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 from flask import Flask, jsonify, request, abort, make_response, redirect
-from flask_api import status
 from auth import Auth
 
 AUTH = Auth()
@@ -60,7 +59,7 @@ def logout():
         AUTH.destroy_session(user.id)
         return redirect('/')
     except Exception:
-        return Resonse(status=403)
+        return Response(status=403)
 
 
 if __name__ == "__main__":
