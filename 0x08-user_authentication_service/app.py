@@ -70,7 +70,7 @@ def profile():
     if sess:
         user = AUTH.get_user_from_session_id(sess)
         if user:
-            return jsonify({"email": "<user email>"}), 200
+            return jsonify({"email": user.email}), 200
     abort(403)
 
 
