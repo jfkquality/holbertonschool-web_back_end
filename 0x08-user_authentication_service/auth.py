@@ -57,15 +57,13 @@ class Auth:
 
     def get_reset_password_token(self, email: str) -> str:
         """ 16. Generate reset password token """
-        if not email:
-            raise ValueError()
-        try:
+        if email:
             user = self._db.find_user_by(email=email)
-            token = uuid.uuid4()
-            self._db.update_user(user.id, reset_token=token)
-            return token
-        except ValueError as e:
-            return e
+            if user:
+                token = uuid.uuid4()
+                self._db.update_user(user.id, reset_token=token)
+                return token
+        raise ValueError()
 
 
 def _hash_password(password: str) -> str:
