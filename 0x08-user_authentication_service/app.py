@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from flask import Flask, jsonify, request, abort, make_response, \
-    redirect, Response
+    redirect, render_template
 from auth import Auth
 
 AUTH = Auth()
