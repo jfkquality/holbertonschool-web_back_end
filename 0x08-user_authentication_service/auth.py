@@ -73,6 +73,7 @@ class Auth:
 
         hpwd = _hash_password(password)
         self._db.update_user(user.id, hashed_password=hpwd, reset_token=None)
+        return None
 
 
 def _hash_password(password: str) -> str:
