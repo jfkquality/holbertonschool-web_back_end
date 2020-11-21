@@ -27,28 +27,26 @@ class Auth:
         """ 8. Credentials validation """
         try:
             user = self._db.find_user_by(email=email)
-            if bcrypt.checkpw(password.encode(), user.hashed_password):
-                return True
-            else:
-                raise Exception()
-        except Exception:
+            return bcrypt.checkpw(password.encode(), user.hashed_password)
+        except NoResultFound:
             return False
 
     def create_session(self, email: str) -> str:
         """ 10. Get session ID """
         try:
             user = self._db.find_user_by(email=email)
-            sess_id = _generate_uuid()
-            self._db.update_user(user.id, session_id=sess_id)
-            return sess_id
-        except Exception:
+        except NoResultFound:
             return None
+
+        sess_id = _generate_uuid()
+        self._db.update_user(user.id, session_id=sess_id)
+        return sess_id
 
     def get_user_from_session_id(self, session_id: str) -> str:
         """ 12. Find user by session ID """
         try:
             return self._db.find_user_by(session_id=session_id)
-        except Exception:
+        except NoResultFound:
             return None
 
     def destroy_session(self, user_id: str) -> None:
@@ -57,15 +55,14 @@ class Auth:
 
     def get_reset_password_token(self, email: str) -> str:
         """ 16. Generate reset password token """
-        if email:
+        try:
             user = self._db.find_user_by(email=email)
-            if user:
-                token = _generate_uuid()
-                self._db.update_user(user.id, reset_token=token)
-                return token
-        raise ValueError()
-        # except ValueError as e:
-        #     return e
+        except NoResultFound:
+            raise ValueError
+
+        token = _generate_uuid()
+        self._db.update_user(user.id, reset_token=token)
+        return token
 
 
 def _hash_password(password: str) -> str:
