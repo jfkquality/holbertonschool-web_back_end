@@ -58,7 +58,7 @@ def logout():
     try:
         user = AUTH.get_user_from_session_id(sess)
         AUTH.destroy_session(user.id)
-        return redirect('/')
+        return redirect(url_for('/'))
     except Exception:
         return Response(status=403)
 
