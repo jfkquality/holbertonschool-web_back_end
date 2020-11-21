@@ -55,11 +55,11 @@ def login():
 def logout():
     """ 14. Log out """
     sess = request.cookies.get('session_id')
-    try:
-        user = AUTH.get_user_from_session_id(sess)
+    user = AUTH.get_user_from_session_id(sess)
+    if user:
         AUTH.destroy_session(user.id)
         return redirect('/')
-    except Exception:
+    else:
         return render_template(), 403
 
 
