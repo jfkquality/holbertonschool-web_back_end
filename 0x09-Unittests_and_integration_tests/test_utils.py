@@ -45,7 +45,6 @@ class TestGetJson(unittest.TestCase):
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False})
     ])
-
     def test_get_json(self, url, payload):
         """ 2. Mock HTTP calls """
         with patch('utils.requests.get') as mock_get:
@@ -73,7 +72,7 @@ class TestMemoize(unittest.TestCase):
                 return self.a_method()
 
     with @patch('utils.a_property') as mock_prop:
-        
+        pass
 
 
 if __name__ == '__main__':
