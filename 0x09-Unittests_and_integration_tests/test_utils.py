@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 """ test_access_nested_map Unit test class """
 
-from utils import access_nested_map
-import unittest
-from parameterized import parameterized, parameterized_class
 from typing import (
     Mapping,
     Sequence,
@@ -11,8 +8,14 @@ from typing import (
     Dict,
     Callable,
 )
+import unittest
+import requests
+from utils import access_nested_map, get_json
+from parameterized import parameterized, parameterized_class
+from unittest.mock import Mock, patch
 
 anm = access_nested_map
+gj = get_json
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -34,6 +37,22 @@ class TestAccessNestedMap(unittest.TestCase):
         """" 1. Parameterize a unit test """
         with self.assertRaises(KeyError):
             anm(nested_map, path)
+
+
+class TestGetJson(unittest.TestCase):
+    """ Test utils Get Json function """
+    @parameterized.expand([
+        ("http://example.com", {"payload": True}),
+        ("http://holberton.io", {"payload": False})
+    ])
+
+    def test_get_json(self, url, payload):
+        """ 2. Mock HTTP calls """
+        with patch('utils.requests.get') as mock_get:
+            mock_get.return_value.json.return_value = payload
+            # res = gj(url)
+            self.assertEqual(gj(url), payload)
+            mock_get.assert_called_once()
 
 
 if __name__ == '__main__':
