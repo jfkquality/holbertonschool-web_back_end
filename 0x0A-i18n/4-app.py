@@ -30,7 +30,11 @@ def index():
 
 @babel.localeselector
 def get_locale():
-    """ Get lcoale """
+    """ Get locale """
+    locale = request.args.get("locale")
+    if locale:
+        if locale not in config.BABEL_DEFAULT_LOCALE:
+            return locale
     return request.accept_languages.best_match(config.LANGUAGES)
 
 
