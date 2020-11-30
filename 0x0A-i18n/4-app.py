@@ -33,7 +33,7 @@ def get_locale():
     """ Get locale """
     locale = request.args.get("locale")
     if locale:
-        if locale not in config.BABEL_DEFAULT_LOCALE:
+        if locale in config.LANGUAGES:
             return locale
     return request.accept_languages.best_match(config.LANGUAGES)
 
