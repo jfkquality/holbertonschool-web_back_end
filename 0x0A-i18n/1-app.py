@@ -9,7 +9,7 @@ app = Flask(__name__)
 babel = Babel(app)
 
 
-class Config(object):
+class Config():
     """ Babel  Config class """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = 'en'
@@ -25,7 +25,7 @@ def index():
     """ Main page """
     title = "Welcome to Holberton"
     header = "Hello World"
-    return render_template('0-index.html', title=title, header=header)
+    return render_template('1-index.html', title=title, header=header)
 
 
 if __name__ == "__main__":
