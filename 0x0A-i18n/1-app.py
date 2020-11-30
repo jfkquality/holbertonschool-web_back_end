@@ -13,7 +13,7 @@ class Config():
     """ Babel  Config class """
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = 'en'
-    BABEL_DEFAULT_TIMEZONe = "UTC"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
 config = Config()
