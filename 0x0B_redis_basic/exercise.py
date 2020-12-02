@@ -23,14 +23,17 @@ class Cache():
     def get(self, key: str, fn: Callable = None) -> str:
         """ 1. Reading from Redis and recovering original type """
         r = self._redis
-        if not key:
-            return None
+        # if not key:
+        #     return None
         if not callable(fn):
             return r.get(key)
         value = r.get(key).decode("utf-8")
+        # print("VALUE", value)
+        # if fn is not None:
+        #     return fn(value)
         if value.isnumeric():
             return int(value)
-        return r.get(key).decode("utf-8")
+        return value  # fn(r.get(key).decode("utf-8")
 
     def get_str():
         """Get string from redis db."""

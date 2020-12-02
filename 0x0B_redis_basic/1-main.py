@@ -16,4 +16,4 @@ for value, fn in TEST_CASES.items():
     assert cache.get(key, fn=fn) == value
     # print(cache.get(key, fn=fn) == value)
     # print (cache.get(key, fn=fn))
-    print ("TYPE", type(cache.get(key, fn=fn)))
+    # print ("TYPE", type(cache.get(key, fn=fn)))
