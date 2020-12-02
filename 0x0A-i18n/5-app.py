@@ -44,10 +44,11 @@ def get_locale():
             return locale
     return request.accept_languages.best_match(config.LANGUAGES)
 
+
 def get_user():
     user = request.args.get('login_as')
     if not user:
-        if user not in  users:
+        if user not in users:
             return None
     return users[user]
 
