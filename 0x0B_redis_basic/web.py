@@ -8,6 +8,6 @@ Cache = __import__('exercise').Cache
 cache = Cache()
 
 
-def get_page():
+def get_page(request):
     """ track how many times a particular URL was accessed """
     pass
