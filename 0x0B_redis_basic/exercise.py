@@ -25,7 +25,9 @@ class Cache():
         r = self._redis
         if not key:
             return None
-        if not callable(fn):  # type(fn) is not types.FunctionType:
-            # print ("FN", fn, "VALUE", r.get(key))
+        if not callable(fn):
             return r.get(key)
+        value = r.get(key).decode("utf-8")
+        if value.isnumeric():
+            return int(value)
         return r.get(key).decode("utf-8")
