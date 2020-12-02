@@ -10,7 +10,7 @@ class Cache():
     """ Cache class """
     def __init__(self):
         """ 0. Writing strings to Redis """
-        self._redis = redis.Redis
+        self._redis = redis.Redis()
         self._redis.flushdb()
 
     def store(data: Any[str, bytes, int, float]) -> str:
