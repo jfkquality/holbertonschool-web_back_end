@@ -27,13 +27,13 @@ class Cache():
         #     return None
         if not callable(fn):
             return r.get(key)
-        value = r.get(key).decode("utf-8")
+        value = r.get(key)  # .decode("utf-8")
         # print("VALUE", value)
         # if fn is not None:
         #     return fn(value)
-        if value.isnumeric():
-            return int(value)
-        return value  # fn(r.get(key).decode("utf-8")
+        # if fn(value).isnumeric():
+        #     return int(fn(value))
+        return fn(value)  # fn(r.get(key).decode("utf-8")
 
     def get_str():
         """Get string from redis db."""
