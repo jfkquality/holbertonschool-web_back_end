@@ -31,3 +31,11 @@ class Cache():
         if value.isnumeric():
             return int(value)
         return r.get(key).decode("utf-8")
+
+    def get_str():
+        """Get string from redis db."""
+        pass
+
+    def get_int():
+        """Get int from redis db."""
+        pass
