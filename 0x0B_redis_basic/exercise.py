@@ -33,6 +33,11 @@ def call_history(method: Callable) -> Callable:
     return wrapper
 
 
+def replay():
+    """ 4. Retrieve lists: display history of calls of a function. """
+    pass
+
+
 class Cache():
     """ Cache class for Redis """
     def __init__(self):
