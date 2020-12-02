@@ -27,7 +27,9 @@ def call_history(method: Callable) -> Callable:
     def wrapper(self, *args, **kwargs):
         """ add ins and outs to lists """
         self._redis.rpush(ins, str(args))
-        return self._redis.lpush(outs, method(self, *args, **kwargs))
+        output = method(self, *args, **kwargs)
+        self._redis.lpush(outs, output)
+        return output
     return wrapper
 
 
