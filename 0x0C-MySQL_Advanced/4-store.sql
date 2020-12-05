@@ -6,5 +6,10 @@ CREATE TRIGGER lessqty
        AFTER INSERT ON orders
        FOR EACH ROW
 
-UPDATE items
-       SET quantity = quantity - new.number
+BEGIN
+	UPDATE items
+       	       SET quantity = quantity - new.number
+	       WHERE name = new.item_name;
+END$$
+
+DELIMITER ;
