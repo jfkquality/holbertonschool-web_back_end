@@ -8,7 +8,7 @@ CREATE TRIGGER reset_email
        FOR EACH ROW
 
 BEGIN
-	IF new.email != old.email THEN
+	IF new.email <> old.email THEN
 	   SET new.valid_email = !old.valid_email;
 	END IF;
 END$$
