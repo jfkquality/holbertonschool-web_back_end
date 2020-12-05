@@ -9,7 +9,7 @@ CREATE TRIGGER reset_email
 
 BEGIN
 	IF new.email <> old.email THEN
-	   SET new.valid_email = !old.valid_email;
+	   SET new.valid_email = 0;  -- !old.valid_email;
 	END IF;
 END$$
 
