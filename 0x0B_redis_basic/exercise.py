@@ -38,10 +38,6 @@ def replay():
     pass
 
 
-def get_page():
-    """ 5. Implementing an expiring web cache and tracker """
-    pass
-
 class Cache():
     """ Cache class for Redis """
     def __init__(self):
