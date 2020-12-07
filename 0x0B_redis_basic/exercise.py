@@ -38,6 +38,9 @@ def replay():
     pass
 
 
+def get_page():
+    pass
+
 class Cache():
     """ Cache class for Redis """
     def __init__(self):
