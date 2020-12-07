@@ -12,4 +12,4 @@ def get_page(url: str) -> str:
     """ track how many times a particular URL was accessed """
     # response = requests.get(url)
     # return response.json  # response.text
-    pass
+    return None
