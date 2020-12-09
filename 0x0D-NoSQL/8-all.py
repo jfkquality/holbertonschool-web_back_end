@@ -5,6 +5,7 @@ from pymongo import MongoClient
 
 
 def list_all(mongo_collection):
+    """ list all docs in a collection """
     client = MongoClient('mongodb://127.0.0.1:27017')
     db = client["mongo_collection"]
     return db.mongo_collection.find()
