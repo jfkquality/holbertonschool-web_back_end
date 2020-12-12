@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 export default function appendToEachArrayValue(array, appendString) {
   let idx = 0;
   for (const value of array) {
@@ -7,3 +8,4 @@ export default function appendToEachArrayValue(array, appendString) {
 
   return array;
 }
+/* eslint-enable no-param-reassign */
