@@ -1,5 +1,5 @@
 export default function iterateThroughObject(reportWithIterator) {
-  reportWithIterator.join(' | ');
+  return reportWithIterator.join(' | ');
   // let names;
   // for (const item of reportWithIterator) {
   //   names.concat(item);
@@ -7,5 +7,5 @@ export default function iterateThroughObject(reportWithIterator) {
   //     names.concat(' | ');
   //   }
   // }
-  return names;
+  // return names;
 }
