@@ -1,3 +1,6 @@
 export default function createIteratorObject(report) {
-  return report[Symbol.iterator]();
+  const iter = {
+    [Symbol.iterator]() {
+      return { report[allEmployees] }
+    }
 }
