@@ -10,7 +10,7 @@ export default class HolbertonCourse {
         && students.every((student) => typeof (student) === 'string')) {
       this._students = students;
     } else {
-      throw TypeError('students must be an Array of String');
+      throw TypeError('students must be an Array of strings');
     }
     this._name = name;
     this._length = length;
@@ -28,15 +28,15 @@ export default class HolbertonCourse {
     return this._students;
   }
 
-  set name(nam) {
-    this._name = nam;
+  set name(name) {
+    this._name = name;
   }
 
-  set length(len) {
-    this._length = len;
+  set length(length) {
+    this._length = length;
   }
 
-  set students(stud) {
-    this._students = stud;
+  set students(students) {
+    this._students = students;
   }
 }
