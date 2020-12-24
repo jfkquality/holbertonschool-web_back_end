@@ -23,8 +23,8 @@ export default class Building {
     return this._sqft;
   }
 
-  // evacuationWarningMessage() {
-  //   console.log('HELLO');
-  // }
+  evacuationWarningMessage() {
+    console.log('HELLO');
+  }
 }
 // Building.evacuationWarningMessage();
