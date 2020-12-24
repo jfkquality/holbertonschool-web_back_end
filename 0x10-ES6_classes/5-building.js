@@ -11,8 +11,8 @@ export default class Building {
     // console.log("SUPER CONSTRUCTOR =", super.prototype);
     // console.log("this.constructor === Building", this.constructor === Building);
     if (this.constructor !== Building
-    // && this.evacuationWarningMessage) === undefined) { //super.evacuationWarningMessage
-       && this.evacuationWarningMessage !== Building.prototype.evacuationWarningMessage
+       && this.evacuationWarningMessage === super.evacuationWarningMessage
+       // && this.evacuationWarningMessage !== Building.prototype.evacuationWarningMessage
     ) {
       throw Error('Class extending Building must override evacuationWarningMessage');
     }
