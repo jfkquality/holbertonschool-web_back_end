@@ -19,9 +19,9 @@ module.exports = function countStudents(path) {
   const headers = csv[0];
   csv.shift();
 
-  const result = csv.map((value) =>
-    value.reduce((acc, data, index) =>
-      ({ ...acc, [headers[index]]: data }), {}));
+  const result = csv.map((value) => (
+    value.reduce((acc, data, index) => (
+      { ...acc, [headers[index]]: data }), {})));
 
   console.log(`${msg1} ${result.length}`);
   // console.log(result);
