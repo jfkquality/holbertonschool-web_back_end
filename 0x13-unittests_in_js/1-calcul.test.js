@@ -30,6 +30,15 @@ describe('Calculate', () => {
     it('should equal 7', () => {
       assert.equal(0, calculateNumber(5.4, 5, 'SUBTRACT'));
     });
+    it('should equal 6', () => {
+      assert.equal(6, calculateNumber(5.4, -.6, 'SUBTRACT'));
+    });
+    it('should equal 5', () => {
+      assert.equal(5, calculateNumber(5.4, .4, 'SUBTRACT'));
+    });
+    it('should equal 0', () => {
+      assert.equal(0, calculateNumber(5.4, 5, 'SUBTRACT'));
+    });
   });
 
   describe("divide", () => {
@@ -41,6 +50,15 @@ describe('Calculate', () => {
     });
     it('should equal 0', () => {
       assert.equal(0, calculateNumber(0, 3.5, 'DIVIDE'));
+    });
+    it('should equal Error', () => {
+      assert.equal('Error', calculateNumber(1.5, .4, 'DIVIDE'));
+    });
+    it('should equal Error', () => {
+      assert.equal('Error', calculateNumber(1.5, -.4, 'DIVIDE'));
+    });
+    it('should equal -2', () => {
+      assert.equal(-2, calculateNumber(1.5, -.6, 'DIVIDE'));
     });
     it('should equal Error', () => {
       assert.equal('Error', calculateNumber(1.5, .4, 'DIVIDE'));
