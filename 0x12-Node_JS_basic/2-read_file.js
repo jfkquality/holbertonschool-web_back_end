@@ -10,6 +10,7 @@ module.exports = function countStudents(path) {
     throw new Error('Cannot load the database');
   }
 
+  // Created 2D array
   csv = csv
     .toString()
     .split('\n')
@@ -21,6 +22,7 @@ module.exports = function countStudents(path) {
   const headers = csv[0];
   csv.shift();
 
+  // Create array of student objects
   const result = csv.map((value) => (
     value.reduce((acc, data, index) => (
       { ...acc, [headers[index]]: data }), {})));
