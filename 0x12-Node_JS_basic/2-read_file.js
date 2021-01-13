@@ -24,9 +24,15 @@ module.exports = function countStudents(path) {
       { ...acc, [headers[index]]: data }), {})));
 
   console.log(`${msg1} ${result.length}`);
+
+  // Get count of students by field, list firstname in each field.
+  // Use array.reduce().
+  // See https://learnwithparam.com/blog/how-to-group-by-array-of-objects-using-a-key/
+
+  // Sone fooling around before finding above reduce()
   // console.log(result);
-  const arrStr = JSON.stringify(result);
-  // console.log(JSON.stringify(result));
-  const strJSON = JSON.parse(arrStr);
-  // console.log(strJSON);
+  // for (const row of result) {
+  //   console.log(row.field);
+  // }
+  // console.log(result[1].field, result[1].firstname);
 };
