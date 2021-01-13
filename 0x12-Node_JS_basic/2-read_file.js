@@ -5,7 +5,7 @@ module.exports = function countStudents(path) {
   const msg1 = 'Number of students:';
 
   try {
-    csv = fs.readFileSync(path, 'utf8')
+    csv = fs.readFileSync(path, 'utf8');
   } catch (err) {
     throw new Error('Cannot load the database');
   }
@@ -25,8 +25,7 @@ module.exports = function countStudents(path) {
     value.reduce((acc, data, index) => (
       { ...acc, [headers[index]]: data }), {})));
 
-  // console.log(`${msg1} ${result.length}`);
-  console.log('Number of students: ' + result.length);
+  console.log(`${msg1} ${result.length}`);
 
   // Get count of students by field, list firstname in each field.
   // Use array.reduce().
