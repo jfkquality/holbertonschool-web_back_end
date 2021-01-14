@@ -19,7 +19,7 @@ describe('Calculate', () => {
   });
 
   describe("subtract", () => {
-    it('should equal 5', () => {
+    it('should equal -2', () => {
       expect(calculateNumber(1.5, 3.7, 'SUBTRACT')).to.equal(-2);
     });
     it('should equal -3', () => {
