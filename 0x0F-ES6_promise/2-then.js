@@ -1,5 +1,5 @@
 export default function handleResponseFromAPI(promise) {
-  return promise.then(() => (
+  promise.then(() => (
     {
       status: 200,
       body: 'success',
