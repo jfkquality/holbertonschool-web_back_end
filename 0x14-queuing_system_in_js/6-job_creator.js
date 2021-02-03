@@ -1,7 +1,5 @@
-import redis from 'redis';
 import kue from 'kue';
 
-const client = redis.createClient();
 const queue = kue.createQueue();
 
 const job = queue.create('push_notification_code', {
@@ -12,7 +10,7 @@ const job = queue.create('push_notification_code', {
 });
 
 job.on('complete', (result) => {
-  console.log('Notification job completed');
+  console.log('Notification job completed', result);
 }).on('failed', (err) => {
-  console.log('Notification job failed');
+  console.log('Notification job failed', err);
 });
