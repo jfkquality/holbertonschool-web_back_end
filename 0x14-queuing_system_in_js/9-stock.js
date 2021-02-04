@@ -2,10 +2,10 @@ import express from 'express';
 
 
 const listProducts = [
-  {ItemId: 1, itemName: Suitcase 250, price: 50, initialAvailableQuantity: 4},
-  {ItemId: 2, itemName: Suitcase 450, price: 100, initialAvailableQuantity: 10},
-  {ItemId: 3, itemName: Suitcase 650, price: 350, initialAvailableQuantity: 2},
-  {ItemId: 4, itemName: Suitcase 1050, price: 550, initialAvailableQuantity: 5},
+  {ItemId: 1, itemName: 'Suitcase 250', price: 50, initialAvailableQuantity: 4},
+  {ItemId: 2, itemName: 'Suitcase 450', price: 100, initialAvailableQuantity: 10},
+  {ItemId: 3, itemName: 'Suitcase 650', price: 350, initialAvailableQuantity: 2},
+  {ItemId: 4, itemName: 'Suitcase 1050', price: 550, initialAvailableQuantity: 5},
 ];
 
 function getItemById(id) {
