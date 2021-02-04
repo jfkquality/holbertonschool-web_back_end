@@ -15,13 +15,20 @@ function getItemById(id) {
 const app = express();
 const port = 1245;
 
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
 app.use(express.json());
 
 app.get('/list_products', (req, res) => {
   res.json(listProducts);
-}
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+});
+
+app.get('/list_products/:itemId', (req, res) => {
+  if (!getItemById(itemId)) {
+    res.json('status': 'Product not found');
+  }
 });
 
 export default app;
