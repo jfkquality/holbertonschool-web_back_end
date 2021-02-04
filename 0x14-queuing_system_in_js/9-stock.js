@@ -26,7 +26,7 @@ app.get('/list_products', (req, res) => {
 });
 
 app.get('/list_products/:itemId', (req, res) => {
-  if (!getItemById(itemId)) {
+  if (!getItemById(req.params.itemId)) {
     res.json({'status': 'Product not found'});
   }
 });
