@@ -57,7 +57,7 @@ app.get('/list_products/:itemId', (req, res) => {
 
   // console.log('ITEM FROM APP.GET LIST PROD BY ID: ', item);
   if (!item) {
-    res.json({'status': 'Product not found'});
+    res.json({status: 'Product not found'});
   }
   item.currentQuantity = stock;
   res.json(item);
@@ -68,17 +68,17 @@ app.get('/reserve_product/:itemId', (req, res) => {
   const item = getItemById(itemId);
 
   if (!item) {
-    res.json({'status': 'Product not found'});
+    res.json({status: 'Product not found'});
     return;
   }
   const stock = getCurrentReservedStockById(itemId);
 
   if (stock < 1) {
-    res.json({"status":"Not enough stock available","itemId": itemId});
+    res.json({status:"Not enough stock available","itemId": itemId});
     return;
   }
   reserveStockById(itemId, stock);
-  res.json({"status":"Reservation confirmed","itemId": item.itemId});
+  res.json({status:"Reservation confirmed","itemId": item.itemId});
 });
 
 export default app;

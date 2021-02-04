@@ -13,9 +13,13 @@ async function getCurrentAvailableSeats() {
 
 let reservationEnabled = true;
 
+// Redis client created above
+
+// Create Kue server:
 const kue = require('kue')
 , queue = kue.createQueue();
 
+//Create Express server:
 const express = require('express');
 const app = express();
 const port = 1245;
@@ -29,8 +33,8 @@ app.get('/available_seats', (req, res) => {
 })
 
 app.get('/reserve_seat', (req, res) => {
-  if (reservationEnabled === false)
-    return (res.json({status: 'Reservation in process'}));
+  if (!reservationEnabled)
+    return (res.json({status: 'Reservation are blocked'}));
 
   const job = queue.create('reserve_seat').save(function(err) {
     if (err) return (res.json({status: 'Reservation failed'}));
