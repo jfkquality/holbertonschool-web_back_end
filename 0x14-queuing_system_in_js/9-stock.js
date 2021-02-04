@@ -9,7 +9,7 @@ const listProducts = [
 ];
 
 function getItemById(id) {
-  const obj = listProducts.find(obj => obj.id == id);
+  const obj = listProducts.find(obj) => obj.id == id);
   return obj;
 }
 const app = express();
