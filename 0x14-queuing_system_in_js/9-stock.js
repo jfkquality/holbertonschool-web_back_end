@@ -31,4 +31,14 @@ app.get('/list_products/:itemId', (req, res) => {
   }
 });
 
+app.get('/reserve_product/:itemId', (req, res) => {
+  const item = getItemById(req.params.itemId);
+  if (!item) {
+    res.json({'status': 'Product not found'});
+  }
+  if (item.initialAvailableQuantity < 1) {
+    res.json({"status":"Reservation confirmed","itemId": item.itemId});
+  }
+});
+
 export default app;
