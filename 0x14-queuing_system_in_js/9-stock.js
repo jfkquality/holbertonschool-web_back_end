@@ -1,4 +1,6 @@
 import express from 'express';
+import redis from 'redis';
+import { promisify } from 'util';
 
 
 const listProducts = [
@@ -9,7 +11,7 @@ const listProducts = [
 ];
 
 function getItemById(id) {
-  const obj = listProducts.find(obj) => obj.id == id);
+  const obj = listProducts.find(obj => obj.iteimId == id);
   return obj;
 }
 const app = express();
@@ -24,6 +26,20 @@ app.use(express.json());
 app.get('/list_products', (req, res) => {
   res.json(listProducts);
 });
+
+
+const client = redis.createClient();
+client.on('error', (error) => {
+      console.error(error);
+});
+
+function reserveStockById(itemId, stock) {
+  client.set(itemId, stock)
+}
+
+async function getCurrentReservedStockById(itemId) {
+  return client.get(itemId);
+}
 
 app.get('/list_products/:itemId', (req, res) => {
   if (!getItemById(req.params.itemId)) {
