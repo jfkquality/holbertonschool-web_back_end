@@ -8,7 +8,8 @@ function reserveSeat(number) {
 }
 
 async function getCurrentAvailableSeats() {
-  return (await getAsync('available_seats'));
+  const seats =  (getAsync('available_seats'));
+  return seats;
 }
 
 let reservationEnabled = true;
@@ -28,8 +29,8 @@ app.listen(port, () => {
   console.log(`app listening at http://localhost:${port}`);
 })
 
-app.get('/available_seats', (req, res) => {
-  res.json({numberOfAvailableSeats: getCurrentAvailableSeats()});
+app.get('/available_seats', async (req, res) => {
+  res.json({numberOfAvailableSeats: await getCurrentAvailableSeats()});
 })
 
 app.get('/reserve_seat', (req, res) => {
@@ -40,8 +41,7 @@ app.get('/reserve_seat', (req, res) => {
     if (err) return (res.json({status: 'Reservation failed'}));
 
     res.json({status: 'Reservation in process'});
-  });
-  job.on('complete', function ()  {
+  }).on('complete', function ()  {
     console.log('Seat reservation job %d completed', job.id);
   }).on('failed', function (err) {
     console.log('Seat reservation job %d failed', job.id,  err)
@@ -49,16 +49,22 @@ app.get('/reserve_seat', (req, res) => {
 })
 
 app.get('/process', (req, res) => {
-  queue.process('reserve_seat', function(job, done) {
-    let seats = getCurrentAvailableSeats();
-    seats -= 1;
+  queue.process('reserve_seat', async function(job, done) {
+    let seats = await getCurrentAvailableSeats();
+    console.log('SEATS BEFORE: ', seats);
+    seats--;
     reserveSeat(seats);
-    if (seats = 0)
-      reservationEnabled = false;
-    else if (seats >= 0)
-      done();
-    else
-      done(Error('Not enough seats available'));
+    let seats2 = await getCurrentAvailableSeats();
+    console.log('SEATS AFTER: ', seats2);
+    if (seats >= 0) {
+      if (seats === 0)
+        reservationEnabled = false;
+      else
+	done();
+    } else
+      return done(new Error('Not enough seats available'));
   });
   res.json({status: 'Queue processing'});
 })
+
+reserveSeat(3);
