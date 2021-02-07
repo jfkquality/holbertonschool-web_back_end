@@ -12,10 +12,10 @@ export default function updateStudentGradeByCity(students, city, newGrades) {
     // console.log('FOUND STUDENT1: ', student);
     // console.log('FOUND ITEM2: ', item2);
     // console.log(item2 ? {...student, ...item2} : student.grade = 'N/A', student);
-    if (!item2) {
-      student.grade = 'N/A'; // eslint-disable-line no-param-reassign
-    }
-    return { ...student, ...item2 };
+    // if (!item2) {
+    //   student.grade = 'N/A'; // eslint-disable-line no-param-reassign
+    // }
+    return { ...student, grade: item2 ? item2.grade : 'N/A' };
     // return item2 ? {...student, ...item2} : student,  student.grade = 'M/A';
   });
   return cityStudents;
