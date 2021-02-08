@@ -8,7 +8,10 @@ export default class EVCar extends Car {
     // this._color = color;
     this._range = range;
   }
-  // cloneCar() {
-  //   return this.constructor(this._brand, this._motor, this._color);
-  // }
+
+  cloneCar() {
+    // return super.cloneCar();
+    return new (
+      Object.getPrototypeOf(this.constructor))(this._brand, this._motor, this._color);
+  }
 }
