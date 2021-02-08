@@ -4,4 +4,4 @@ export default function uploadPhoto(fileName) {
   //   reject(() => new Error(`$fileName cannot be processed`));
   // });
 }
-console.log(uploadPhoto('guillame.jpg'));
+// console.log(uploadPhoto('guillame.jpg'));
