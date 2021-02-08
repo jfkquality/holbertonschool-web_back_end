@@ -7,8 +7,8 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
     .then((results) => {
       results.forEach((result) => {
         if (result.status === 'rejected') {
-          result.value = `Error: ${result.reason.message}`;
-          delete result.reason;
+          result.value = `Error: ${result.reason.message}`; // eslint-disable-line no-param-reassign
+          delete result.reason; // eslint-disable-line no-param-reassign
         }
       });
       return results;
