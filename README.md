@@ -5,8 +5,7 @@
 
 # Web Back End
 
-This repository contains programs and scripts primarily written in Python and Javascript for the Web Back Ends curriculum at Holber\
-ton School.
+This repository contains programs and scripts primarily written in Python and Javascript for the Web Back Ends curriculum at Holbeton School.
 
 * [0x00. Python - Variable Annotations](./0x00-python_variable_annotations)
 * [0x01. Python - Async](./0x01-python_async_function)
